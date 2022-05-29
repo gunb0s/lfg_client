@@ -3,7 +3,7 @@ import { setNFTData } from "./getMetadata";
 
 export const getContribution = async (user, setScore) => {
   const response = await axios.post(
-    "http://ec2-3-101-79-116.us-west-1.compute.amazonaws.com:4002/point",
+    "https://ec2-3-101-79-116.us-west-1.compute.amazonaws.com:4002/point",
     {
       userAddress: user.toLowerCase(),
     }
@@ -27,7 +27,7 @@ export const myPageAxios = async (
       const {
         data: { myNftList },
       } = await axios.post(
-        "http://ec2-3-101-79-116.us-west-1.compute.amazonaws.com:4002/myPage",
+        "https://ec2-3-101-79-116.us-west-1.compute.amazonaws.com:4002/myPage",
         {
           userAddress: user,
         }
@@ -48,7 +48,7 @@ export const myPageAxios = async (
     case 1:
       // request myListed Loans
       let { data } = await axios.get(
-        "http://ec2-3-101-79-116.us-west-1.compute.amazonaws.com:4002/loan"
+        "https://ec2-3-101-79-116.us-west-1.compute.amazonaws.com:4002/loan"
       );
       let promises1 = data.loanList.map((d) => setNFTData(d.tokenURI));
       Promise.all(promises1).then((result) => {
@@ -65,7 +65,7 @@ export const myPageAxios = async (
     case 2:
       // request Funded Loans
       let response = await axios.get(
-        "http://ec2-3-101-79-116.us-west-1.compute.amazonaws.com:4002/loan"
+        "https://ec2-3-101-79-116.us-west-1.compute.amazonaws.com:4002/loan"
       );
       let data2 = response.data;
       let promises2 = data2.loanList.map((d) => setNFTData(d.tokenURI));
@@ -85,7 +85,7 @@ export const myPageAxios = async (
       const {
         data: { offerList },
       } = await axios.post(
-        "http://ec2-3-101-79-116.us-west-1.compute.amazonaws.com:4002/trade/offer",
+        "https://ec2-3-101-79-116.us-west-1.compute.amazonaws.com:4002/trade/offer",
         {
           userAddress: user.toLowerCase(),
         }
@@ -98,7 +98,7 @@ export const myPageAxios = async (
       const {
         data: { respondList },
       } = await axios.post(
-        "http://ec2-3-101-79-116.us-west-1.compute.amazonaws.com:4002/trade/respond",
+        "https://ec2-3-101-79-116.us-west-1.compute.amazonaws.com:4002/trade/respond",
         {
           userAddress: user.toLowerCase(),
         }

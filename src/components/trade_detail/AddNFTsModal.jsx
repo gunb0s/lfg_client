@@ -110,7 +110,7 @@ const AddNFTsModal = ({
       const {
         data: { myNftList },
       } = await axios.post(
-        "http://ec2-3-101-79-116.us-west-1.compute.amazonaws.com:4002/myPage",
+        "https://ec2-3-101-79-116.us-west-1.compute.amazonaws.com:4002/myPage",
         {
           userAddress: isReceive ? counterParty : user,
         }

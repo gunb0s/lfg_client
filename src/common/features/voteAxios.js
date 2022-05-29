@@ -3,7 +3,7 @@ import { checkClosed, getPossibleTokenIdToVote, getVotes } from "./vote";
 
 export const getVaults = async (setVaultList) => {
   const response = await axios.get(
-    "http://ec2-3-101-79-116.us-west-1.compute.amazonaws.com:4002/vote/season"
+    "https://ec2-3-101-79-116.us-west-1.compute.amazonaws.com:4002/vote/season"
   );
 
   if (response.data.message === "succeed") {
@@ -15,7 +15,7 @@ export const getVaults = async (setVaultList) => {
 
 export const getVault = async (id, setSeason) => {
   const response = await axios.get(
-    `http://ec2-3-101-79-116.us-west-1.compute.amazonaws.com:4002/vote/season/${id}`
+    `https://ec2-3-101-79-116.us-west-1.compute.amazonaws.com:4002/vote/season/${id}`
   );
 
   if (response.data.message === "succeed") {
@@ -25,7 +25,7 @@ export const getVault = async (id, setSeason) => {
 
 export const voteToCandid = async (id, addr, user) => {
   await axios.post(
-    `http://ec2-3-101-79-116.us-west-1.compute.amazonaws.com:4002/vote/season/${id}`,
+    `https://ec2-3-101-79-116.us-west-1.compute.amazonaws.com:4002/vote/season/${id}`,
     {
       userAddress: user.toLowerCase(),
       nftAddress: addr,
@@ -35,7 +35,7 @@ export const voteToCandid = async (id, addr, user) => {
 
 export const getAgendas = async (setAgendaList) => {
   const response = await axios.get(
-    "http://ec2-3-101-79-116.us-west-1.compute.amazonaws.com:4002/vote/agenda"
+    "https://ec2-3-101-79-116.us-west-1.compute.amazonaws.com:4002/vote/agenda"
   );
 
   if (response.data.message === "succeed") {
@@ -55,7 +55,7 @@ export const getAgendaInformation = async (
   setPossibleTokenIds
 ) => {
   const response = await axios.post(
-    `http://ec2-3-101-79-116.us-west-1.compute.amazonaws.com:4002/vote/agenda/${id}`,
+    `https://ec2-3-101-79-116.us-west-1.compute.amazonaws.com:4002/vote/agenda/${id}`,
     {
       userAddress: user,
     }
