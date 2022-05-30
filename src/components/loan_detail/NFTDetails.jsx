@@ -88,7 +88,7 @@ const NFTDetails = ({ data }) => {
         <Name>{data.team}</Name>
         <Verified>
           <VerifiedUserIcon />
-          LFG Verified
+          OasisVerified
         </Verified>
       </TitleWrapper>
       {renderContent(data, Video, NFTImage)}
