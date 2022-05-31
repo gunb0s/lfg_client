@@ -28,18 +28,24 @@ export const setNFTData = async (tokenURI) => {
 
   let uri = tokenURI.startsWith("ipfs") ? ipfsToHttp(tokenURI) : tokenURI;
 
-  const metadataResponse = await axios.get(uri);
+  try {
+    const metadataResponse = await axios.get(uri);
 
-  let contentURI = metadataResponse.data.image.startsWith("ipfs")
-    ? ipfsToHttp(metadataResponse.data.image)
-    : metadataResponse.data.image;
+    let contentURI = metadataResponse.data.image.startsWith("ipfs")
+      ? ipfsToHttp(metadataResponse.data.image)
+      : metadataResponse.data.image;
 
-  const contentResponse = await axios.get(contentURI);
+    const contentResponse = await axios.get(contentURI);
 
-  let type = contentResponse.headers["content-type"];
-  return {
-    ...metadataResponse.data,
-    image: contentURI,
-    type,
-  };
+    let type = contentResponse.headers["content-type"];
+    return {
+      ...metadataResponse.data,
+      image: contentURI,
+      type,
+    };
+  } catch (err) {
+    return {
+      type: "image/png",
+    };
+  }
 };
