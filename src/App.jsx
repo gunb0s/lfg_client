@@ -35,6 +35,10 @@ const App = () => {
   };
 
   useEffect(() => {
+    if (window.klaytn === undefined) {
+      return;
+    }
+
     isUnlocked().then(() => {
       setUser((prev) => window.klaytn.selectedAddress);
     });
